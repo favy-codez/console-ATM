@@ -33,5 +33,12 @@ function error() {
 	atm();
 }
 
-
+function exit() {
+	var confirm_leave = confirm('You have selected exit.');
+	if (confirm_leave) {
+		window.close();
+	} else {
+		atm();
+	}
+}
 
