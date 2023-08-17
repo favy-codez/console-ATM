@@ -1,23 +1,20 @@
- //set initial balance.
- let balance = 1000;
-
 //  CHECK BALANCE OPTION
- function get_balance() {
-     alert('Your current balance is: '+balance);
-     continueOption()
- }
- 
-// WITHDRAWAL OPTION
- function make_withdrawal() {
-	var withdrawal = parseFloat(prompt('How much would you like to withdrawal?'));
-	if (isNaN(withdrawal) || withdrawal === '') {
-		alert('Error: please enter a number!');
-		make_withdrawal();
-	} else {
-		balance -= withdrawal;
-		get_balance();
-	}
+function get_balance() {
+    alert('Your current balance is: '+balance);
     continueOption()
+}
+
+// WITHDRAWAL OPTION
+function make_withdrawal() {
+   var withdrawal = parseFloat(prompt('How much would you like to withdrawal?'));
+   if (isNaN(withdrawal) || withdrawal === '') {
+       alert('Error: please enter a number!');
+       make_withdrawal();
+   } else {
+       balance -= withdrawal;
+       get_balance();
+   }
+   continueOption()
 }
 
 // ERROR MESSAGE
@@ -46,7 +43,20 @@ function optionMenu() {
 
     function checkPassword(password){ //to check if the password is correct or not    
         if(correct_pass.test(passwordEntered)){
-        optionMenu();
+            var selectAccount = Number(prompt("Which type of account do you have?\n 1. Savings\n 2. Current\n 3. Credit"));
+            if (selectAccount < 4){
+                var choice = parseInt(prompt(`Welcome!!! ${name} to ${bank}\n What would you like to do?\n 1.) Check Balance\n 2.) Deposit\n 3.) Withdrawal\n 4.) Exit`)); 
+            }if (choice === 1) {
+                get_balance();
+            } else if (choice === 2) {
+                make_deposit();
+            } else if (choice === 3) {
+                make_withdrawal();
+            } else if (choice === 4) {
+                exit();
+            } else {
+                error();
+            }
         }else{
         passTry = 3;
         while(!(correct_pass.test(passwordEntered))){
@@ -60,24 +70,11 @@ function optionMenu() {
                 break;
             } 
             passwordEntered = parseInt(prompt("Dear "+name+ ", Enter your 4 digits PIN"));
-        }optionMenu();
+        };
     }
 }checkPassword(passwordEntered);
 
-    var selectAccount = Number(prompt("Which type of account do you have?\n 1. Savings\n 2. Current\n 3. Credit"));
-    if (selectAccount < 4){
-        var choice = parseInt(prompt(`Welcome!!! ${name} to ${bank}\n What would you like to do?\n 1.) Check Balance\n 2.) Deposit\n 3.) Withdrawal\n 4.) Exit`)); 
-    }if (choice === 1) {
-        get_balance();
-    } else if (choice === 2) {
-        make_deposit();
-    } else if (choice === 3) {
-        make_withdrawal();
-    } else if (choice === 4) {
-        exit();
-    } else {
-        error();
-    }
+    
 }
 
 // CONTINUE
@@ -97,6 +94,11 @@ function atm() {
 }
 
 atm();
+
+
+
+
+
 
 
 
