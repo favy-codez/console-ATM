@@ -42,17 +42,7 @@ function exit() {
 	}
 }
 
-function atm() {
-    var name = prompt("Enter your name") ; 
-    var capitalized = name.toUpperCase();
-    var bank = prompt("Enter Bank Name");
-    // var bankName = Number(prompt("What is your bank name?\n 1. GTB\n2.Access\n3.Stanbic-IBTC\n4.Fidelity\n5.Sterling\n6.Skye\n7.Firstbank\n8.Others"));
-    //prompt user for choice.
-	
-    var selectAccount = Number(prompt("Which type of account do you have?\n 1. Savings\n 2. Current\n 3. Credit"));
-    // input pin
-    // check pin
-    // send option
+let options = () => {
     if (selectAccount < 4){
         var choice = parseInt(prompt(`Welcome!!! ${capitalized} to ${bank}\n What would you like to do?\n 1.) Check Balance\n 2.) Deposit\n 3.) Withdrawal\n 4.) Exit`)); 
     }if (choice === 1) {
@@ -68,4 +58,54 @@ function atm() {
 	}
 }
 
+function atm() {
+    var name = prompt("Enter your name") ; 
+    var capitalized = name.toUpperCase();
+    var bank = prompt("Enter Bank Name");
+    // var bankName = Number(prompt("What is your bank name?\n 1. GTB\n2.Access\n3.Stanbic-IBTC\n4.Fidelity\n5.Sterling\n6.Skye\n7.Firstbank\n8.Others"));
+    //prompt user for choice.
+	
+    var selectAccount = Number(prompt("Which type of account do you have?\n 1. Savings\n 2. Current\n 3. Credit"));
+    // input pin
+    // check pin
+    // send option
+    options()
+}
+
 atm();
+
+// check password
+var passwordEntered = parseInt(prompt("Dear "+NAME+ ", Enter your 4 digits PIN"));
+var correct_pass = (/^[0-9]{4}$/); 
+var min_bal = 1000;
+
+function checkPassword(password){ //to check if the password is correct or not    
+    if(correct_pass.test(passwordEntered)){
+        optionMenu();
+    }else{
+        passTry = 3;
+        while(!(correct_pass.test(passwordEntered))){
+           alert("You don't a valid PIN, input the correct one now");
+            alert("You have only " + passTry + " chances to try");
+            passTry = passTry - 1; 
+
+            if (passTry === 0){
+                alert("Maximum tries exceeded, please contact your bank to retrieve your ATM card"); 
+                exit();
+                break;
+            } 
+            passwordEntered = parseInt(prompt("Dear "+NAME+ ", Enter your 4 digits PIN"));
+        }optionMenu();
+    }
+}checkPassword(passwordEntered);
+
+// continue
+function toContinue(){
+    var yesNo =  parseInt(prompt("Do you want to perform another transaction?\n 1.Yes \n 2. No"));
+    if(yesNo === 2){
+       exit();
+    }
+    else{
+        return optionMenu(); 
+    }
+}
