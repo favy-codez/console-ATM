@@ -16,4 +16,22 @@
          get_balance();
          }
  }
- 
+
+ function make_withdrawal() {
+	var withdrawal = parseFloat(prompt('How much would you like to withdrawal?'));
+	if (isNaN(withdrawal) || withdrawal === '') {
+		alert('Error: please enter a number!');
+		make_withdrawal();
+	} else {
+		balance -= withdrawal;
+		get_balance();
+	}
+}
+
+function error() {
+	alert('Please make a valid selection');
+	atm();
+}
+
+
+
