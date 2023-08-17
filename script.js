@@ -1,13 +1,13 @@
  //set initial balance.
  let balance = 1000;
 
+//  CHECK BALANCE OPTION
  function get_balance() {
      alert('Your current balance is: '+balance);
      continueOption()
  }
  
- 
-
+// WITHDRAWAL OPTION
  function make_withdrawal() {
 	var withdrawal = parseFloat(prompt('How much would you like to withdrawal?'));
 	if (isNaN(withdrawal) || withdrawal === '') {
@@ -26,6 +26,7 @@ function error() {
 	atm();
 }
 
+// EXIT OPTION
 function exit() {
 	var confirm_leave = confirm('You have selected exit.');
 	if (confirm_leave) {
