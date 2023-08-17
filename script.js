@@ -28,6 +28,25 @@
 	}
 }
 
+function optionMenu() {
+    var name = prompt("Enter your name").toUpperCase() ; 
+    var bank = prompt("Enter Bank Name");
+    var selectAccount = Number(prompt("Which type of account do you have?\n 1. Savings\n 2. Current\n 3. Credit"));
+    if (selectAccount < 4){
+        var choice = parseInt(prompt(`Welcome!!! ${name} to ${bank}\n What would you like to do?\n 1.) Check Balance\n 2.) Deposit\n 3.) Withdrawal\n 4.) Exit`)); 
+    }if (choice === 1) {
+        get_balance();
+    } else if (choice === 2) {
+        make_deposit();
+    } else if (choice === 3) {
+        make_withdrawal();
+    } else if (choice === 4) {
+        exit();
+    } else {
+        error();
+    }
+}
+
 function error() {
 	alert('Please make a valid selection');
 	atm();
@@ -42,34 +61,20 @@ function exit() {
 	}
 }
 
-let options = () => {
-    if (selectAccount < 4){
-        var choice = parseInt(prompt(`Welcome!!! ${capitalized} to ${bank}\n What would you like to do?\n 1.) Check Balance\n 2.) Deposit\n 3.) Withdrawal\n 4.) Exit`)); 
-    }if (choice === 1) {
-		get_balance();
-	} else if (choice === 2) {
-		make_deposit();
-	} else if (choice === 3) {
-		make_withdrawal();
-	} else if (choice === 4) {
-		exit();
-	} else {
-		error();
-	}
+// continue
+function Continue(){
+    var yesNo =  Number(prompt("Do you want to perform another transaction?\n 1.Yes \n 2. No"));
+    if(yesNo === 2){
+       exit();
+    }
+    else{
+        return optionMenu(); 
+    }
 }
 
+// MAIN MENU
 function atm() {
-    var name = prompt("Enter your name") ; 
-    var capitalized = name.toUpperCase();
-    var bank = prompt("Enter Bank Name");
-    // var bankName = Number(prompt("What is your bank name?\n 1. GTB\n2.Access\n3.Stanbic-IBTC\n4.Fidelity\n5.Sterling\n6.Skye\n7.Firstbank\n8.Others"));
-    //prompt user for choice.
-	
-    var selectAccount = Number(prompt("Which type of account do you have?\n 1. Savings\n 2. Current\n 3. Credit"));
-    // input pin
-    // check pin
-    // send option
-    options()
+    optionMenu()
 }
 
 atm();
@@ -99,13 +104,12 @@ function checkPassword(password){ //to check if the password is correct or not
     }
 }checkPassword(passwordEntered);
 
-// continue
-function toContinue(){
-    var yesNo =  parseInt(prompt("Do you want to perform another transaction?\n 1.Yes \n 2. No"));
-    if(yesNo === 2){
-       exit();
-    }
-    else{
-        return optionMenu(); 
-    }
-}
+
+
+// var bankName = Number(prompt("What is your bank name?\n 1. GTB\n2.Access\n3.Stanbic-IBTC\n4.Fidelity\n5.Sterling\n6.Skye\n7.Firstbank\n8.Others"));
+    //prompt user for choice.
+	
+    
+    // input pin
+    // check pin
+    // send option
